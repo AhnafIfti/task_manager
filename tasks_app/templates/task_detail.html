@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% extends "base.html" %} {% block body_block %}
+<div>
+  <h3 class="mt-4 mb-2">{{ task_info.title }}</h3>
+  <hr />
+</div>
+<div class="card my-2">
+  <div class="card-body">
+    <p class="card-text"><b>Description: </b>{{ task_info.description }}</p>
+    <p class="card-text"><b>Due Date: </b>{{ task_info.due_date }}</p>
+    <p class="card-text"><b>Status: </b>{{ task_info.status }}</p>
+    <p class="card-text"><b>Priority: </b>{{ task_info.priority }}</p>
+    <p class="card-text"><b>Category: </b>{{ task_info.category.name }}</p>
+  </div>
+</div>
+{% endblock %}

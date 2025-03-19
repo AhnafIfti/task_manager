@@ -8,7 +8,11 @@
 <div class="card my-2">
   <div class="card-body">
     <h5 class="card-title">{{ task.title }}</h5>
-    <a href="" class="btn btn-sm btn-regular mt-3">Visit Task</a>
+    <a
+      href="{% url 'tasks_app:task_detail' task_id=task.id %}"
+      class="btn btn-sm btn-regular mt-3"
+      >Visit Task</a
+    >
   </div>
 </div>
 {% endfor %} {% else %}
