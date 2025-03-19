@@ -1,0 +1,20 @@
+<!DOCTYPE html>{% extends 'base.html' %} {% block body_block %}
+<div>
+  <h3 class="mt-4 mb-2">Category List</h3>
+  <hr />
+</div>
+{% if categories %} {% for category in categories %}
+<div class="card my-2">
+  <div class="card-body">
+    <h5 class="card-title">{{ category.title }}</h5>
+    <p class="card-text">{{ category.description }}</p>
+    <a href="" class="btn btn-sm btn-regular mt-3">Visit Category</a>
+  </div>
+</div>
+{% endfor %} {% else %}
+<div class="card my-2">
+  <div class="card-body">
+    <h5 class="card-title">No Category Available</h5>
+  </div>
+</div>
+{% endif %} {% endblock %}
