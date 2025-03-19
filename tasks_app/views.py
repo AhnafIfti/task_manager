@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from tasks_app.models import Category
+from tasks_app.models import Category, Task
 
 # Create your views here.
 def task_list(request):
-    task_list_dictionary = {'title': 'List | Task'}
+    task_list = Task.objects.order_by('title')
+    task_list_dictionary = {'tasks': task_list, 'title': 'List | Task'}
     return render(request, 'task_list.html', context=task_list_dictionary)
 
 def category_list(request):
