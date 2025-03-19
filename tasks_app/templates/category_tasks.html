@@ -1,0 +1,27 @@
+<!DOCTYPE html>{% extends 'base.html' %} {% block body_block %}
+<div>
+  <h3 class="mt-4 mb-2">{{ category_info.title }}</h3>
+  <p>{{ category_info.description }}</p>
+</div>
+<hr />
+<div>
+  <h4 class="my-3">Category Tasks</h4>
+</div>
+{% if category_task_info %} {% for task in category_task_info %}
+<div class="card my-2">
+  <div class="card-body">
+    <h5 class="card-title">{{ task.title }}</h5>
+    <a
+      href="{% url 'tasks_app:task_detail' task_id=task.id %}"
+      class="btn btn-sm btn-regular mt-3"
+      >Visit Task
+    </a>
+  </div>
+</div>
+{% endfor %} {% else %}
+<div class="card my-2">
+  <div class="card-body">
+    <h5 class="card-title">No Tasks Available</h5>
+  </div>
+</div>
+{% endif %} {% endblock %}

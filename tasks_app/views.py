@@ -36,3 +36,9 @@ def category_list(request):
     category_list = Category.objects.order_by('name')
     category_list_dictionary = {'categories': category_list, 'title': 'List | Category'}
     return render(request, 'category_list.html', context=category_list_dictionary)
+
+def category_tasks(request, category_id):
+    category_info = Category.objects.get(pk = category_id)
+    task_info = Task.objects.filter(category=category_info)
+    category_task_dictionary = {'category_info':category_info, 'category_task_info': task_info, 'title': 'Task | Category'}
+    return render(request, 'category_tasks.html', context=category_task_dictionary)

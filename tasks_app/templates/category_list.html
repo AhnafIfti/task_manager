@@ -10,7 +10,11 @@
     {% if category.description %}
     <p class="card-text">{{ category.description }}</p>
     {% endif %}
-    <a href="" class="btn btn-sm btn-regular mt-3">Visit Category</a>
+    <a
+      href="{% url 'tasks_app:category_tasks' category_id=category.id %}"
+      class="btn btn-sm btn-regular mt-3"
+      >Visit Category</a
+    >
   </div>
 </div>
 {% endfor %} {% else %}
