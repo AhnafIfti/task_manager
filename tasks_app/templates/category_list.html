@@ -6,8 +6,10 @@
 {% if categories %} {% for category in categories %}
 <div class="card my-2">
   <div class="card-body">
-    <h5 class="card-title">{{ category.title }}</h5>
+    <h5 class="card-title">{{ category.name }}</h5>
+    {% if category.description %}
     <p class="card-text">{{ category.description }}</p>
+    {% endif %}
     <a href="" class="btn btn-sm btn-regular mt-3">Visit Category</a>
   </div>
 </div>
