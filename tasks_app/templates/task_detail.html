@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 {% extends "base.html" %} {% block body_block %}
-<div>
-  <h3 class="mt-4 mb-2">{{ task_info.title }}</h3>
-  <hr />
+<div class="container px-0">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="mt-4 mb-0">{{ task_info.title }}</h3>
+    </div>
+  </div>
 </div>
+<hr />
 <div class="card my-2">
   <div class="card-body">
     <p class="card-text"><b>Description: </b>{{ task_info.description }}</p>

@@ -1,7 +1,11 @@
 <!DOCTYPE html>{% extends 'base.html' %} {% block body_block %}
-<div>
-  <h3 class="mt-4 mb-2">{{ category_info.title }}</h3>
-  <p>{{ category_info.description }}</p>
+<div class="container px-0">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="mt-4">{{ category_info.name }}</h3>
+      <p class="mb-0">{{ category_info.description }}</p>
+    </div>
+  </div>
 </div>
 <hr />
 <div>

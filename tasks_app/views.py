@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from tasks_app.models import Category, Task
+from django.shortcuts import render, redirect
+from .models import Category, Task
+from .forms import TaskForm
 
 # Create your views here.
 def task_list(request):
@@ -31,6 +32,21 @@ def task_detail(request, task_id):
 
     task_detail_dictionary = {'task_info':task_details, 'priority_options': priority_options, 'status_options': status_options, 'title': 'Detail | Task'}
     return render(request, 'task_detail.html', context=task_detail_dictionary)
+
+def task_create(request):
+    newTaskForm = TaskForm()
+
+    if request.method == 'POST':
+        newTaskForm = TaskForm(request.POST)
+
+        if newTaskForm.is_valid():
+            newTaskForm.save(commit=True)
+            return redirect('tasks_app:task_list')
+    else:
+        newTaskForm = TaskForm()
+        
+    task_create_dictionary = {'title': 'Create | Task', 'taskForm': newTaskForm}
+    return render(request, 'task_create.html', context=task_create_dictionary)
 
 def category_list(request):
     category_list = Category.objects.order_by('name')

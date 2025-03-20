@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 {% extends "base.html" %} {% block body_block %}
-<div>
-  <h3 class="mt-4 mb-2">Task List</h3>
-  <hr />
+<div class="container px-0">
+  <div class="row">
+    <div class="col-10">
+      <h3 class="mt-4 mb-0">Task List</h3>
+    </div>
+    <div class="col-2 d-flex justify-content-end mt-auto">
+      <a
+        href="{% url 'tasks_app:task_create' %}"
+        class="btn btn-sm btn-new my-auto"
+        >Create Task</a
+      >
+    </div>
+  </div>
 </div>
+<hr />
 {% if tasks %} {% for task in tasks %}
 <div class="card my-2">
   <div class="card-body">
