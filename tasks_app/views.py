@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Category, Task
 from .forms import TaskForm
 
@@ -20,7 +20,7 @@ def task_detail(request, task_id):
         (3, "High"),
     )
 
-    task_details = Task.objects.get(pk=task_id)
+    task_details = get_object_or_404(Task, id=task_id)
     
     for optionId, optionName in priority_options:
         if task_details.priority == optionId:
@@ -54,7 +54,13 @@ def category_list(request):
     return render(request, 'category_list.html', context=category_list_dictionary)
 
 def category_tasks(request, category_id):
-    category_info = Category.objects.get(pk = category_id)
+    category_info = get_object_or_404(Category, id = category_id)
     task_info = Task.objects.filter(category=category_info)
     category_task_dictionary = {'category_info':category_info, 'category_task_info': task_info, 'title': 'Task | Category'}
     return render(request, 'category_tasks.html', context=category_task_dictionary)
+
+def error_404(request, exception):
+    return render(request, 'error_404.html' , status = 404)
+
+def error_500(request):
+    return render(request, 'error_500.html' , status = 500)
